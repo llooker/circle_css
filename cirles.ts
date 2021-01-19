@@ -58,7 +58,13 @@ const visObject = {
     allocated = 2000000,
     total = 4300000,
     formatPercent = d3.format(".0%");
-
+const datumField = queryResponse.fields.measure_like[0]
+const datum = data[0][datumField.name]
+let value = datum.value
+const compareField = queryResponse.fields.measure_like[1]
+const compareDatum = data[0][compareField.name]
+let compareValue = compareDatum.value
+console.log(value);
 var arc = d3.svg.arc()
     .startAngle(0)
     .innerRadius(52)
@@ -93,7 +99,7 @@ var description = meter.append("text")
     .attr("dy", "2.3em")
     .text("Total Complete");
 
-var i = d3.interpolate(progress, allocated / total);
+var i = d3.interpolate(progress, value / compareValue);
 
  d3.transition().duration(1000).tween("progress", function() {
   return function(t) {
