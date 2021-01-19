@@ -1,5 +1,5 @@
 
-
+(function() {
 const visObject = {
  /**
   * Configuration options for your visualization. In Looker, these show up in the vis editor
@@ -108,3 +108,4 @@ var i = d3.interpolate(progress, allocated / total);
 };
 
 looker.plugins.visualizations.add(visObject);
+}());
